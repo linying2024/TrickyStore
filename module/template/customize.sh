@@ -83,7 +83,7 @@ elif [ "$ARCH" = "arm" ]; then
   extract "$ZIPFILE" "lib/armeabi-v7a/lib$SONAME.so" "$MODPATH" true
   extract "$ZIPFILE" "lib/armeabi-v7a/libinject.so" "$MODPATH" true
   extract "$ZIPFILE" "lib/armeabi-v7a/libtszygisk.so" "$MODPATH/zygisk" true
-  mv "$MODPATH/zygisk/libtszygisk.so" "$MODPATH/zygisk/armeabi-v7a.so
+  mv "$MODPATH/zygisk/libtszygisk.so" "$MODPATH/zygisk/armeabi-v7a.so"
 else
   ui_print "- Extracting arm64 libraries"
   extract "$ZIPFILE" "lib/arm64-v8a/lib$SONAME.so" "$MODPATH" true
@@ -99,7 +99,10 @@ CONFIG_DIR=/data/adb/tricky_store
 if [ ! -d "$CONFIG_DIR" ]; then
   ui_print "- Creating configuration directory"
   mkdir -p "$CONFIG_DIR"
-  [ ! -f "$CONFIG_DIR/spoof_build_vars" ] && touch "$CONFIG_DIR/spoof_build_vars"
+fi
+if [ ! -f "$CONFIG_DIR/spoof_build_vars" ]; then
+  echo "Creating none spoof_build_vars"
+  touch "$CONFIG_DIR/spoof_build_vars"
 fi
 if [ ! -f "$CONFIG_DIR/keybox.xml" ]; then
   ui_print "- Adding default software keybox"
