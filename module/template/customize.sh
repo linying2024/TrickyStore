@@ -78,6 +78,12 @@ if [ "$ARCH" = "x64" ]; then
   extract "$ZIPFILE" "lib/x86_64/libinject.so" "$MODPATH" true
   extract "$ZIPFILE" "lib/x86_64/libtszygisk.so" "$MODPATH/zygisk" true
   mv "$MODPATH/zygisk/libtszygisk.so" "$MODPATH/zygisk/x86_64.so"
+elif [ "$ARCH" = "x86" ]; then
+  ui_print "- Extracting x86 libraries"
+  extract "$ZIPFILE" "lib/x86/lib$SONAME.so" "$MODPATH" true
+  extract "$ZIPFILE" "lib/x86/libinject.so" "$MODPATH" true
+  extract "$ZIPFILE" "lib/x86/libtszygisk.so" "$MODPATH/zygisk" true
+  mv "$MODPATH/zygisk/libtszygisk.so" "$MODPATH/zygisk/x86.so"
 elif [ "$ARCH" = "arm" ]; then
   ui_print "- Extracting arm libraries"
   extract "$ZIPFILE" "lib/armeabi-v7a/lib$SONAME.so" "$MODPATH" true
