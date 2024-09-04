@@ -57,7 +57,7 @@ if [ ! -f "$TMPDIR/verify.sh" ]; then
   ui_print "! This zip may be corrupted, please try downloading again"
   abort    "*********************************************************"
 fi
-。 "$TMPDIR/verify.sh"
+. "$TMPDIR/verify.sh"
 extract "$ZIPFILE" 'customize.sh'  "$TMPDIR/.vunzip"
 extract "$ZIPFILE" 'verify.sh'     "$TMPDIR/.vunzip"
 
