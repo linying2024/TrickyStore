@@ -62,3 +62,6 @@ contains_reset_prop "vendor.boot.bootmode" "recovery" "unknown"
 
 # Custom ROMs support
 check_reset_prop "persist.sys.pixelprops.pi" "false"
+
+# Reset boot vbmeta hash
+#resetprop -n ro.boot.vbmeta.digest 12ADA0F9EE76BB134F96ECB4FF5E882C92FC011C861584BB2AFD62AAF42C1C57
